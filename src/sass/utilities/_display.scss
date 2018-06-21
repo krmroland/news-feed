@@ -1,0 +1,9 @@
+$displays: (
+    flex,
+    block
+);
+@each $display in $displays {
+    .d-#{$display} {
+        display: $display;
+    }
+}

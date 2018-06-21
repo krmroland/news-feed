@@ -1,0 +1,39 @@
+$positions: (
+    c: center,
+    sb: space-between,
+    e: flex-end,
+    s: flex-start
+);
+
+@each $prefix, $position in $positions {
+    //justify content{
+    .jc#{$prefix} {
+        justify-content: $position;
+    }
+    //align items
+    .ai#{$prefix} {
+        align-items: $position;
+    }
+}
+
+//grid
+.columns {
+    display: flex;
+}
+@for $i from 1 through 12 {
+    .column-#{$i} {
+        flex: 0 0 percentage($i/12);
+        max-width: percentage($i/12);
+    }
+}
+
+//flex direction
+@each $direction in (column, row) {
+    .flex-#{$direction} {
+        flex-direction: $direction;
+    }
+}
+//flex wrap
+.flex-wrap {
+    flex-wrap: wrap;
+}

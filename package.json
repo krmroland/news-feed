@@ -9,12 +9,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start": "concurrently \"react-scripts start\" \"npm run watch-css\"",
+    "start-react": "react-scripts start",
+    "start": "concurrently \"npm run start-react\" \"npm run watch-css\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar ./src/sass/app.scss ./src/app.css",
-    "watch-css": "npm run build-css -- --watch"
+    "watch-css": "npm run build-css -- --watch -- --recursive"
   },
   "devDependencies": {
     "concurrently": "^3.6.0",

@@ -1,0 +1,28 @@
+.main-header {
+    font-family: $font-sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-top: 6px solid $dark;
+    z-index: 3;
+    // font-size: $font-medium;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: $white;
+}
+.header-icon {
+    svg {
+        width: 2.5em;
+        height: 2.5em;
+        fill: $primary;
+    }
+}
+
+.header-brand {
+    //display: block;
+    color: $primary;
+    // background-color: $black;
+    padding: 0.05em 0.5em;
+}
