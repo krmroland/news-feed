@@ -16,17 +16,6 @@ $positions: (
     }
 }
 
-//grid
-.columns {
-    display: flex;
-}
-@for $i from 1 through 12 {
-    .column-#{$i} {
-        flex: 0 0 percentage($i/12);
-        max-width: percentage($i/12);
-    }
-}
-
 //flex direction
 @each $direction in (column, row) {
     .flex-#{$direction} {
@@ -36,4 +25,30 @@ $positions: (
 //flex wrap
 .flex-wrap {
     flex-wrap: wrap;
+}
+
+//grid
+.columns {
+    flex-wrap: wrap;
+    display: flex;
+    @for $i from 1 through 12 {
+        .column-#{$i} {
+            flex: 0 0 percentage($i/12);
+            max-width: percentage($i/12);
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    %max-width {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .columns {
+        @for $i from 1 through 12 {
+            .column-#{$i} {
+                @extend %max-width;
+            }
+        }
+    }
 }

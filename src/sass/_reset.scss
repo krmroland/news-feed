@@ -30,3 +30,12 @@ svg {
     height: 1em;
     fill: currentColor;
 }
+
+@media (max-width: 780px) {
+    :root {
+        font-size: 1em;
+    }
+    body {
+        line-height: 1.25;
+    }
+}

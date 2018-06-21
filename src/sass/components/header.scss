@@ -5,7 +5,7 @@
     text-transform: uppercase;
     border-top: 6px solid $dark;
     z-index: 3;
-    // font-size: $font-medium;
+
     position: fixed;
     top: 0;
     right: 0;
@@ -19,10 +19,30 @@
         fill: $primary;
     }
 }
-
+.mobile-search {
+    display: none;
+    svg {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
 .header-brand {
-    //display: block;
     color: $primary;
-    // background-color: $black;
     padding: 0.05em 0.5em;
+}
+
+@media (max-width: 992px) {
+    .main-header {
+        padding: 0 2em 0 1em;
+        .filters {
+            display: none;
+        }
+        .header-brand {
+            flex: 0 0 90%;
+        }
+
+        .mobile-search {
+            display: block;
+        }
+    }
 }

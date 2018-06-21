@@ -12,8 +12,8 @@
     margin: 0;
     font-size: 1rem;
     color: $dark;
-    font-weight: 400;
-    padding: 0.5em;
+    font-weight: 600;
+    padding: 0.75em 0.5em;
     font-family: $font-sans-serif;
 }
 
@@ -23,6 +23,15 @@
         max-width: 100%;
     }
 }
+.article-links {
+    a {
+        font-weight: 600;
+        color: $primary;
+    }
+}
 
-.article-body {
+@media (max-width: 992px) {
+    .article {
+        padding: 0 !important;
+    }
 }
