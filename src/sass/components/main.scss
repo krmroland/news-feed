@@ -29,7 +29,7 @@ main {
     background-color: $light;
 
     svg {
-        stroke: darken($black, 10);
+        stroke: $black;
         width: 8em;
         height: 8em;
     }

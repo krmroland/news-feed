@@ -115,6 +115,12 @@ class Store {
         this.updateData();
         this.updateArticlesByFilters();
     }
+    updateQuery(query) {
+        //set the language so that the scope is not broad
+        this.Http.byQuery(query);
+        this.updateData();
+        this.updateArticlesByFilters();
+    }
     updateLanguage(language) {
         this.filters["language"] = language;
         //set the document lang for correct formating
@@ -133,12 +139,15 @@ class Store {
 
         const sources = this.sources.map(({ id, name }) => ({ id, name }));
 
-        this.sourceIds = this.sources.map(source => source.id);
+        this.setSourceIdsFromSource();
 
         this.app.setState(state => {
             state["sources"] = sources;
             return state;
         });
+    }
+    setSourceIdsFromSource() {
+        this.sourceIds = this.sources.map(source => source.id);
     }
     filterSources() {
         this.sources = this.allSources.filter(source => {

@@ -66,6 +66,8 @@ class Http {
     }
 
     byQuery(query) {
+        //clear country if any
+        this.setParam("country", null);
         return this.setParam("query", query);
     }
 

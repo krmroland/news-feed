@@ -39,7 +39,7 @@ export default class FiltersComponent extends Component {
                         {this.countryOptions()}
                     </select>
                 </div>
-                <SearchComponent />
+                <SearchComponent store={this.props.store} />
 
                 <div className="column-2 pr-1 xs-hidden">
                     <select
