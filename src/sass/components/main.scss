@@ -1,0 +1,36 @@
+main {
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .columns.app {
+        flex-direction: column-reverse;
+    }
+}
+
+.main {
+    //offset for fixed header
+    padding-top: 5em;
+}
+
+.loader {
+    position: fixed;
+    //cover the navbar
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+
+    background-color: $light;
+
+    svg {
+        stroke: $black;
+        width: 8em;
+        height: 8em;
+    }
+}

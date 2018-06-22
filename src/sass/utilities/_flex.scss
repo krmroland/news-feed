@@ -1,0 +1,54 @@
+$positions: (
+    c: center,
+    sb: space-between,
+    e: flex-end,
+    s: flex-start
+);
+
+@each $prefix, $position in $positions {
+    //justify content{
+    .jc#{$prefix} {
+        justify-content: $position;
+    }
+    //align items
+    .ai#{$prefix} {
+        align-items: $position;
+    }
+}
+
+//flex direction
+@each $direction in (column, row) {
+    .flex-#{$direction} {
+        flex-direction: $direction;
+    }
+}
+//flex wrap
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+//grid
+.columns {
+    flex-wrap: wrap;
+    display: flex;
+    @for $i from 1 through 12 {
+        .column-#{$i} {
+            flex: 0 0 percentage($i/12);
+            max-width: percentage($i/12);
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    %max-width {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .columns {
+        @for $i from 1 through 12 {
+            .column-#{$i} {
+                @extend %max-width;
+            }
+        }
+    }
+}

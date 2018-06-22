@@ -1,0 +1,30 @@
+$props: (
+    p: padding,
+    m: margin
+);
+$sides: left, right, top, bottom;
+@for $i from 1 through 4 {
+    @each $prop, $css-prop in $props {
+        $css-value: #{0.5+ ($i * 0.25)}em;
+        .#{$prop}-#{$i} {
+            #{$css-prop}: $css-value;
+        }
+        //horizontal helpers
+        .#{$prop}x-#{$i} {
+            #{$css-prop}-left: $css-value;
+            #{$css-prop}-right: $css-value;
+        }
+        //horizontal helpers
+        .#{$prop}y-#{$i} {
+            #{$css-prop}-top: $css-value;
+            #{$css-prop}-bottom: $css-value;
+        }
+        //side helpers
+        @each $side in $sides {
+            $prefix: str_slice($side, 0, 1);
+            .#{$prop}#{$prefix}-#{$i} {
+                #{$css-prop}-#{$side}: $css-value;
+            }
+        }
+    }
+}

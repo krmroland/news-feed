@@ -1,0 +1,35 @@
+p {
+  margin-bottom: $font-base;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 1.414em 0 0.5em;
+  font-weight: inherit;
+  line-height: 1.2;
+  font-family: $font-sans-serif;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: $font-largest;
+}
+
+h2 {
+  font-size: $font-larger;
+}
+
+h3 {
+  font-size: $font-large;
+}
+
+h4 {
+  font-size: $font-medium;
+}
+
+small,
+.font_small {
+  font-size: $font-small;
+}

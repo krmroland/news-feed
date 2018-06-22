@@ -1,23 +1,26 @@
 {
   "name": "news-feed",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://krmroland.github.io/news-feed/",
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start": "concurrently \"react-scripts start\" \"npm run watch-css\"",
+    "predeploy": "npm run build ",
+    "deploy": "gh-pages -d build",
+    "start": "concurrently \"npm run start-react\" \"npm run watch-css\"",
+    "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar ./src/sass/app.scss ./src/app.css",
-    "watch-css": "npm run build-css -- --watch"
+    "watch-css": "npm run build-css -- --watch -- --recursive"
   },
   "devDependencies": {
     "concurrently": "^3.6.0",
+    "gh-pages": "^1.2.0",
     "node-sass-chokidar": "^1.3.0"
   }
 }

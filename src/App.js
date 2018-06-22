@@ -1,19 +1,53 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { Component, Fragment } from "react";
+import Articles from "./components/Articles";
+import SourcesComponent from "./filters/SourcesComponent";
+import HeaderComponent from "./header/HeaderComponent";
+import Sidebar from "./layouts/Sidebar";
+import LoaderComponent from "./components/LoaderComponent";
+import Store from "./Store";
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            articles: [],
+            sources: [],
+            countries: [],
+            languages: [],
+            categories: [],
+            isLoading: false
+        };
+        this.store = new Store(this);
+    }
+
+    componentDidMount() {
+        this.store.fetchSources().fetchHeadlines();
+    }
+
+    render() {
+        return (
+            <Fragment>
+                {this.state.isLoading && <LoaderComponent />}
+                <HeaderComponent
+                    languages={this.state.languages}
+                    countries={this.state.countries}
+                    store={this.store}
+                />
+                <div className="app columns">
+                    <Sidebar
+                        store={this.store}
+                        categories={this.state.categories}
+                    />
+                    <main className="column-10 main columns">
+                        <Articles articles={this.state.articles} />
+                        <SourcesComponent
+                            store={this.store}
+                            sources={this.state.sources}
+                        />
+                    </main>
+                </div>
+            </Fragment>
+        );
+    }
 }
 
 export default App;
