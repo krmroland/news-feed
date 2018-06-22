@@ -4,7 +4,7 @@ import IconSearch from "../icons/IconSearch";
 export default class SearchComponent extends Component {
     render() {
         return (
-            <div className="column-8 px-2 d-flex">
+            <div className="px-2 d-flex search-box">
                 <input
                     type="text"
                     className="control"

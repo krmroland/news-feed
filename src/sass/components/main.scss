@@ -6,6 +6,9 @@ main {
     .columns.app {
         flex-direction: column-reverse;
     }
+    .mobile-hidden {
+        display: none;
+    }
 }
 
 .main {

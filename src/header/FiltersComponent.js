@@ -29,8 +29,8 @@ export default class FiltersComponent extends Component {
 
     render() {
         return (
-            <div className="column-10 columns">
-                <div className="column-2 pl-1">
+            <div className="d-flex filters">
+                <div className="pl-1 xs-hidden">
                     <select
                         className="control"
                         onChange={this.selectCountry.bind(this)}
@@ -41,7 +41,7 @@ export default class FiltersComponent extends Component {
                 </div>
                 <SearchComponent />
 
-                <div className="column-2 pr-1">
+                <div className="column-2 pr-1 xs-hidden">
                     <select
                         className="control"
                         onChange={this.selectLanguage.bind(this)}
