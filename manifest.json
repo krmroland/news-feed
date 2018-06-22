@@ -1,6 +1,6 @@
 {
-  "short_name": "News Feed",
-  "name": "A simple News Feed App",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
