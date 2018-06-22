@@ -18,9 +18,9 @@
 }
 
 .article-image {
-    border: 2px solid $light;
     img {
         max-width: 100%;
+        border: 2px solid $light;
     }
 }
 .article-links {

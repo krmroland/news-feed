@@ -8,24 +8,42 @@ import IconScreen from "../icons/IconScreen";
 import IconScienceDna from "../icons/IconScienceDna";
 import IconIsuranceCard from "../icons/IconIsuranceCard";
 export default class Sidebar extends Component {
-    links() {
-        return [
-            { name: "Headlines", icon: IconHome },
-            { name: "Trending", icon: IconHome },
-            { name: "All", icon: IconHome },
-            { name: "Business", icon: IconCurrencyDollar },
-            { name: "Entertainment", icon: IconMusic },
-            { name: "General", icon: IconNews },
-            { name: "Health", icon: IconIsuranceCard },
-            { name: "Science", icon: IconScienceDna },
-            { name: "Sports", icon: IconTrophy },
-            { name: "Technology", icon: IconScreen }
-        ];
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeCategory: "Headlines"
+        };
+        this.categories = {
+            business: { name: "Business", icon: IconCurrencyDollar },
+            entertainment: { name: "Entertainment", icon: IconMusic },
+            general: { name: "General", icon: IconNews },
+            health: { name: "Health", icon: IconIsuranceCard },
+            science: { name: "Science", icon: IconScienceDna },
+            sports: { name: "Sports", icon: IconTrophy },
+            technology: { name: "Technology", icon: IconScreen }
+        };
     }
+    links() {
+        const general = [{ name: "Headlines", icon: IconHome }];
+        this.props.categories.forEach(category =>
+            general.push(this.categories[category])
+        );
+        return general;
+    }
+    activateLink(link, e) {
+        e.preventDefault();
+        this.props.store.updateCategory(link.name.toLowerCase());
+        this.setState({ activeCategory: link.name });
+    }
+
     generateLinks() {
         return this.links().map(link => (
             <li key={link.name} className={this.linkClass(link)}>
-                <a href="" className="d-flex aic ">
+                <a
+                    href=""
+                    className="d-flex aic "
+                    onClick={this.activateLink.bind(this, link)}
+                >
                     <i className="sidebar-link-icon">
                         {createElement(link.icon)}
                     </i>
@@ -38,7 +56,7 @@ export default class Sidebar extends Component {
         return this.isActive(link) ? "sidebar-link is-active" : "sidebar-link";
     }
     isActive(link) {
-        return link.name === "All";
+        return link.name === this.state.activeCategory;
     }
     render() {
         return (

@@ -4,8 +4,3 @@
 @import "components/components";
 @import "utilities/utilities";
 
-@media (max-width: 992px) {
-    .columns.app {
-        flex-direction: column-reverse;
-    }
-}
