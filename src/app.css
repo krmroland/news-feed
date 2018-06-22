@@ -117,12 +117,27 @@ main {
 
 @media (max-width: 992px) {
   .columns.app {
-    flex-direction: column-reverse; }
-  .mobile-hidden {
-    display: none; } }
+    flex-direction: column-reverse; } }
 
 .main {
   padding-top: 5em; }
+
+.loader {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  background-color: #bbc6e1; }
+  .loader svg {
+    stroke: #040509;
+    width: 8em;
+    height: 8em; }
 
 .control {
   display: block;

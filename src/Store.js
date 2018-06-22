@@ -5,6 +5,7 @@ class Store {
         this.app = app;
         this.updateArticles = this.updateArticles.bind(this);
         this.Http = new Http();
+
         this.meta = require("./meta.json");
         this.sourceIds = [];
         this.allSources = [];
@@ -14,6 +15,7 @@ class Store {
             language: "en",
             category: ""
         };
+        this.setHttpHooks();
     }
 
     fetchHeadlines() {
@@ -163,6 +165,10 @@ class Store {
         return this.meta.countries.filter(country =>
             countries.has(country.code)
         );
+    }
+    setHttpHooks() {
+        this.Http.beforeRequest(() => this.updateState("isLoading", true));
+        this.Http.afterRequest(() => this.updateState("isLoading", false));
     }
     updateState(key, value, callback) {
         //don't override state with undefined values

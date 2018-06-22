@@ -4,8 +4,16 @@ class Http {
         this.urlAppend = null;
         this.params = {};
         this.formatedParams = null;
-        this.cache = {};
-        this.articlesCallback = null;
+        this.beforeRequestCallback = () => {};
+        this.afterRequestCallback = () => {};
+    }
+    beforeRequest(callback) {
+        this.beforeRequestCallback = callback;
+        return this;
+    }
+    afterRequest(callback) {
+        this.afterRequestCallback = callback;
+        return this;
     }
     get completeUrl() {
         return this.baseUrl + this.urlAppend + this.formatedParams;
@@ -68,12 +76,26 @@ class Http {
                 Authorization: "Bearer 3167f0b33cbe42d98bfe46e24b138275"
             }
         };
-
-        return fetch(this.completeUrl, options)
-            .then(response => response.json())
-            .catch(error => {
-                console.log({ error });
-            });
+        return new Promise((resolve, reject) => {
+            this.beforeRequestCallback();
+            return fetch(this.completeUrl, options)
+                .then(response => {
+                    return response
+                        .json()
+                        .then(data => {
+                            resolve(data);
+                            this.afterRequestCallback(data);
+                        })
+                        .catch(error => {
+                            this.afterRequestCallback(error);
+                            reject(error);
+                        });
+                })
+                .catch(error => {
+                    this.afterRequestCallback(error);
+                    reject(error);
+                });
+        });
     }
 }
 

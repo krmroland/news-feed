@@ -3,7 +3,7 @@ import Articles from "./components/Articles";
 import SourcesComponent from "./filters/SourcesComponent";
 import HeaderComponent from "./header/HeaderComponent";
 import Sidebar from "./layouts/Sidebar";
-
+import LoaderComponent from "./components/LoaderComponent";
 import Store from "./Store";
 class App extends Component {
     constructor(props) {
@@ -13,7 +13,8 @@ class App extends Component {
             sources: [],
             countries: [],
             languages: [],
-            categories: []
+            categories: [],
+            isLoading: false
         };
         this.store = new Store(this);
     }
@@ -25,7 +26,12 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <HeaderComponent {...this.state} store={this.store} />
+                {this.state.isLoading && <LoaderComponent />}
+                <HeaderComponent
+                    languages={this.state.languages}
+                    countries={this.state.countries}
+                    store={this.store}
+                />
                 <div className="app columns">
                     <Sidebar
                         store={this.store}

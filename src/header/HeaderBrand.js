@@ -3,12 +3,12 @@ import IconNews from "../icons/IconNews";
 export default class HeaderBrand extends Component {
     render() {
         return (
-            <a href="" className="header-brand d-flex aic ">
+            <div className="header-brand d-flex aic ">
                 <i className="header-icon">
                     <IconNews />
                 </i>
                 NF
-            </a>
+            </div>
         );
     }
 }
